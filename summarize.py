@@ -57,6 +57,18 @@ def extract_emojis(decided_sequences):
     return version, extract_sequences(decided_sequences["entries"])
 
 
+def print_table(emojis):
+    parts = []
+    parts.append("<table>\n<tbody>\n<tr>")
+    # <tr><td>0 = 😄</td><td>1 = 😂</td><td>0 = 😄</td><td>1 = 😂</td><td>0 = 😄</td><td>1 = 😂</td><td>0 = 😄</td><td>1 = 😂</td><td>0 = 😄</td><td>1 = 😂</td></tr>
+    for i, emoji in enumerate(emojis):
+        if i % 10 == 0 and i != 0:
+            parts.append("</tr>\n<tr>")
+        parts.append(f"<td>{i} = {emoji}</td>")
+    parts.append("</tr>\n</tbody>\n</table>")
+    print("".join(parts))
+
+
 def run():
     with open("emoji-sequences-decided.json", "r") as fp:
         decided_sequences = json.load(fp)
@@ -66,6 +78,7 @@ def run():
         "full_version": version,
         "order": emojis,
     }
+    print_table(emojis)
     with open("emojiver_order.json", "w") as fp:
         json.dump(data, fp)
 
