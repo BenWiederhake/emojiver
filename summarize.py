@@ -79,7 +79,7 @@ def run():
         "order": emojis,
     }
     print_table(emojis)
-    with open("emojiver_order.json", "w") as fp:
+    with open("docs/emojiver_order.json", "w") as fp:
         json.dump(data, fp)
 
 
