@@ -1,0 +1,7 @@
+wget https://www.unicode.org/Public/emoji/latest/emoji-sequences.txt
+
+./expand.py
+
+manually merge updates from emoji-sequences-expanded.json into emoji-sequences-decided.json, make sure that you only add to the *end* of the list, to preserve old version numbers, and only from new(er) emoji versions. Note that "version_minor_and_patch" is new, and should be incremented manually
+
+./summarize.py
